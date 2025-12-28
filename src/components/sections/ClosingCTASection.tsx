@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Sparkles, Star, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const ClosingCTASection = () => {
   return (
@@ -13,22 +13,6 @@ export const ClosingCTASection = () => {
         animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
-
-      {/* Floating Elements */}
-      <motion.div
-        className="absolute top-20 left-1/4 text-primary"
-        animate={{ y: [-15, 15, -15], rotate: [0, 360] }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <Star className="w-8 h-8 fill-current opacity-60" />
-      </motion.div>
-      <motion.div
-        className="absolute bottom-20 right-1/4 text-accent"
-        animate={{ y: [15, -15, 15], rotate: [360, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <Sparkles className="w-10 h-10 opacity-60" />
-      </motion.div>
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div
@@ -81,7 +65,6 @@ export const ClosingCTASection = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button variant="glow" size="xl" className="font-display group">
-              <Sparkles className="w-5 h-5" />
               Invest in Their Future
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Button>
