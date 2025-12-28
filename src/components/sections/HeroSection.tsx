@@ -16,53 +16,53 @@ export const HeroSection = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[80vh]">
           {/* Left Content */}
-          <div className="text-left">
+          <div className="text-left space-y-5 pt-20 lg:pt-0">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              className="mb-4"
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary font-medium text-xs">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/25 text-primary font-medium text-xs tracking-wide">
                 AI-Powered Learning Companion
               </span>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6"
+              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold leading-[1.1] tracking-tight"
             >
               <span className="text-foreground">The world your child will grow into is </span>
               <span className="text-gradient">different</span>
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-base sm:text-lg text-muted-foreground max-w-xl mb-4"
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              className="text-sm sm:text-base lg:text-lg text-muted-foreground max-w-lg leading-relaxed"
             >
               Future success depends on how children think, adapt, and understand themselves — not just on marks.
             </motion.p>
 
             <motion.p
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="text-base sm:text-lg text-accent font-medium max-w-xl mb-6"
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+              className="text-sm sm:text-base lg:text-lg text-accent font-medium max-w-lg leading-relaxed"
             >
               Obi helps children discover who they are early and grow with confidence, not pressure.
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              className="pt-2"
             >
               <Button variant="glow" size="lg" className="font-display group">
                 Invest in Their Future
@@ -73,17 +73,17 @@ export const HeroSection = () => {
 
           {/* Right Content - Astronaut */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="hidden lg:flex justify-center items-center"
           >
             <motion.img
               src={astronaut}
               alt="Obi Astronaut"
-              className="w-full max-w-md floating"
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="w-full max-w-sm xl:max-w-md floating"
+              animate={{ y: [-8, 8, -8] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
             />
           </motion.div>
         </div>
