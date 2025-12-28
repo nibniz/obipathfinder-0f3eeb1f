@@ -24,9 +24,9 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="mb-6"
+              className="mb-4"
             >
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 text-primary font-medium text-sm">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-primary font-medium text-xs">
                 AI-Powered Learning Companion
               </span>
             </motion.div>
@@ -35,7 +35,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-8"
+              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6"
             >
               <span className="text-foreground">The world your child will grow into is </span>
               <span className="text-gradient">different</span>
@@ -45,7 +45,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-base sm:text-lg text-muted-foreground max-w-xl mb-6"
+              className="text-base sm:text-lg text-muted-foreground max-w-xl mb-4"
             >
               Future success depends on how children think, adapt, and understand themselves — not just on marks.
             </motion.p>
@@ -54,7 +54,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="text-base sm:text-lg text-accent font-medium max-w-xl mb-8"
+              className="text-base sm:text-lg text-accent font-medium max-w-xl mb-6"
             >
               Obi helps children discover who they are early and grow with confidence, not pressure.
             </motion.p>
@@ -64,9 +64,9 @@ export const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             >
-              <Button variant="glow" size="xl" className="font-display group">
+              <Button variant="glow" size="lg" className="font-display group">
                 Invest in Their Future
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
           </div>
