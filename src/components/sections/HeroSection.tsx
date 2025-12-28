@@ -35,22 +35,17 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6"
+              className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-8"
             >
-              <span className="text-primary">SPARK</span>
-              <br />
-              <span className="text-foreground">YOUR</span>
-              <br />
-              <span className="text-foreground">CHILD'S</span>
-              <br />
-              <span className="text-gradient">FUTURE</span>
+              <span className="text-foreground">The world your child will grow into is </span>
+              <span className="text-gradient">different</span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-lg sm:text-xl text-muted-foreground max-w-lg mb-8"
+              className="text-base sm:text-lg text-muted-foreground max-w-xl mb-6"
             >
               Future success depends on how children think, adapt, and understand themselves — not just on marks.
             </motion.p>
@@ -59,7 +54,7 @@ export const HeroSection = () => {
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="text-md sm:text-lg text-accent font-medium max-w-lg mb-10"
+              className="text-base sm:text-lg text-accent font-medium max-w-xl mb-8"
             >
               Obi helps children discover who they are early and grow with confidence, not pressure.
             </motion.p>
