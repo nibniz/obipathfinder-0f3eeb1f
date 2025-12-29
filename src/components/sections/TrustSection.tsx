@@ -10,8 +10,13 @@ const trustPoints = [
 
 export const TrustSection = () => {
   return (
-    <section className="py-24 relative cosmic-bg">
-      <div className="container mx-auto px-6">
+    <section className="py-32 relative overflow-hidden cosmic-bg">
+      {/* Decorative Elements */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -19,20 +24,21 @@ export const TrustSection = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30 text-accent font-medium text-sm mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30 text-accent font-medium text-sm mb-8">
             <Heart className="w-4 h-4" />
             Built with Care
           </div>
 
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6">
-            Privacy, <span className="text-gradient">trust & care</span>
+          <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 uppercase tracking-tight">
+            Privacy, <span className="text-gradient">Trust & Care</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-lg mx-auto">
             Your child's learning journey is always private and respectful.
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        {/* Trust Points - Centered Grid */}
+        <div className="grid sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
           {trustPoints.map((point, index) => (
             <motion.div
               key={index}
@@ -40,9 +46,9 @@ export const TrustSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="glass-card rounded-2xl p-6 flex items-center gap-4 group hover:border-accent/50 transition-all duration-300"
+              className="p-5 rounded-2xl bg-muted/50 border border-border/50 backdrop-blur-sm flex items-center gap-4 hover:border-accent/40 transition-colors"
             >
-              <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors flex-shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center flex-shrink-0">
                 <point.icon className="w-6 h-6 text-accent" />
               </div>
               <p className="text-foreground font-medium">{point.text}</p>
