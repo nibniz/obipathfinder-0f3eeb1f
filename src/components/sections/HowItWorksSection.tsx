@@ -1,37 +1,89 @@
 import { motion } from "framer-motion";
-import orbDiscover from "@/assets/orb-discover.png";
-import orbProfile from "@/assets/orb-profile.png";
-import orbGuide from "@/assets/orb-guide.png";
+import { Search, User, Compass } from "lucide-react";
 
 const steps = [
   {
-    orb: orbDiscover,
+    icon: Search,
     number: "01",
     title: "Discover Through Play",
     subtitle: "I explore through stories and games",
     description: "Story-based, science-backed games reveal how your child thinks and feels — naturally, without pressure.",
-    glowColor: "from-cyan-500/30 to-blue-500/30",
-    borderColor: "border-cyan-500/20",
+    gradient: "from-cyan-400 via-blue-500 to-cyan-400",
+    glowColor: "shadow-[0_0_80px_30px_rgba(34,211,238,0.4)]",
+    iconColor: "text-cyan-300",
   },
   {
-    orb: orbProfile,
+    icon: User,
     number: "02",
     title: "Build A Living Profile",
     subtitle: "I grow, and so does my profile",
     description: "Obi creates an evolving picture of your child's strengths, learning style, and emotional patterns.",
-    glowColor: "from-fuchsia-500/30 to-purple-500/30",
-    borderColor: "border-fuchsia-500/20",
+    gradient: "from-fuchsia-400 via-purple-500 to-fuchsia-400",
+    glowColor: "shadow-[0_0_80px_30px_rgba(232,121,249,0.4)]",
+    iconColor: "text-fuchsia-300",
   },
   {
-    orb: orbGuide,
+    icon: Compass,
     number: "03",
     title: "Guide With Action",
     subtitle: "I learn by doing real things",
     description: "Insights become personalised learning sessions and hands-on projects tailored to your child.",
-    glowColor: "from-orange-500/30 to-teal-500/30",
-    borderColor: "border-orange-500/20",
+    gradient: "from-orange-400 via-amber-500 to-teal-400",
+    glowColor: "shadow-[0_0_80px_30px_rgba(251,146,60,0.4)]",
+    iconColor: "text-orange-300",
   },
 ];
+
+const GlowingOrb = ({ 
+  icon: Icon, 
+  gradient, 
+  glowColor, 
+  iconColor 
+}: { 
+  icon: React.ElementType; 
+  gradient: string; 
+  glowColor: string; 
+  iconColor: string;
+}) => (
+  <div className="relative w-48 h-48 md:w-64 md:h-64">
+    {/* Outer glow rings */}
+    <motion.div 
+      className={`absolute inset-0 rounded-full bg-gradient-to-r ${gradient} opacity-20 blur-3xl`}
+      animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.3, 0.2] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+    />
+    
+    {/* Middle glow */}
+    <motion.div 
+      className={`absolute inset-4 rounded-full bg-gradient-to-r ${gradient} opacity-30 blur-2xl`}
+      animate={{ scale: [1.1, 1, 1.1], opacity: [0.3, 0.4, 0.3] }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+    />
+    
+    {/* Core orb */}
+    <motion.div 
+      className={`absolute inset-8 rounded-full bg-gradient-to-br ${gradient} ${glowColor} flex items-center justify-center`}
+      animate={{ scale: [1, 1.05, 1] }}
+      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+    >
+      {/* Inner highlight */}
+      <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/30 to-transparent" />
+      
+      {/* Icon */}
+      <Icon className={`w-12 h-12 md:w-16 md:h-16 ${iconColor} drop-shadow-lg relative z-10`} strokeWidth={1.5} />
+    </motion.div>
+    
+    {/* Light rays */}
+    <motion.div 
+      className={`absolute inset-0 rounded-full`}
+      style={{
+        background: `conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1) 10%, transparent 20%, transparent 100%)`,
+      }}
+      animate={{ rotate: 360 }}
+      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+    />
+  </div>
+);
 
 export const HowItWorksSection = () => {
   return (
@@ -69,23 +121,14 @@ export const HowItWorksSection = () => {
                 index % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
             >
-              {/* Framed Orb Visual */}
+              {/* Glowing Orb Visual */}
               <div className={`flex justify-center ${index % 2 === 1 ? "lg:order-2" : ""}`}>
-                <div className="relative group">
-                  {/* Outer glow */}
-                  <div className={`absolute -inset-4 bg-gradient-to-br ${step.glowColor} rounded-2xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500`} />
-                  
-                  {/* Frame container */}
-                  <div className={`relative bg-background/40 backdrop-blur-sm rounded-xl border ${step.borderColor} p-4 shadow-2xl`}>
-                    <motion.img
-                      src={step.orb}
-                      alt={step.title}
-                      className="w-64 md:w-80 rounded-lg"
-                      animate={{ scale: [1, 1.02, 1] }}
-                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    />
-                  </div>
-                </div>
+                <GlowingOrb 
+                  icon={step.icon} 
+                  gradient={step.gradient} 
+                  glowColor={step.glowColor}
+                  iconColor={step.iconColor}
+                />
               </div>
 
               {/* Text Content */}
