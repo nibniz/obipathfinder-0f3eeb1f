@@ -1,29 +1,35 @@
 import { motion } from "framer-motion";
-import globeDiscover from "@/assets/globe-discover.png";
-import globeProfile from "@/assets/globe-profile.png";
-import globeGuide from "@/assets/globe-guide.png";
+import orbDiscover from "@/assets/orb-discover.png";
+import orbProfile from "@/assets/orb-profile.png";
+import orbGuide from "@/assets/orb-guide.png";
 
 const steps = [
   {
-    globe: globeDiscover,
+    orb: orbDiscover,
     number: "01",
     title: "Discover Through Play",
     subtitle: "I explore through stories and games",
     description: "Story-based, science-backed games reveal how your child thinks and feels — naturally, without pressure.",
+    glowColor: "from-cyan-500/30 to-blue-500/30",
+    borderColor: "border-cyan-500/20",
   },
   {
-    globe: globeProfile,
+    orb: orbProfile,
     number: "02",
     title: "Build A Living Profile",
     subtitle: "I grow, and so does my profile",
     description: "Obi creates an evolving picture of your child's strengths, learning style, and emotional patterns.",
+    glowColor: "from-fuchsia-500/30 to-purple-500/30",
+    borderColor: "border-fuchsia-500/20",
   },
   {
-    globe: globeGuide,
+    orb: orbGuide,
     number: "03",
     title: "Guide With Action",
     subtitle: "I learn by doing real things",
     description: "Insights become personalised learning sessions and hands-on projects tailored to your child.",
+    glowColor: "from-orange-500/30 to-teal-500/30",
+    borderColor: "border-orange-500/20",
   },
 ];
 
@@ -63,18 +69,22 @@ export const HowItWorksSection = () => {
                 index % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
             >
-              {/* Globe Visual */}
+              {/* Framed Orb Visual */}
               <div className={`flex justify-center ${index % 2 === 1 ? "lg:order-2" : ""}`}>
                 <div className="relative group">
-                  {/* Subtle glow behind sphere */}
-                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-[50px] scale-90 opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
-                  <motion.img
-                    src={step.globe}
-                    alt={step.title}
-                    className="relative w-48 md:w-64 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-                    animate={{ y: [-8, 8, -8], rotate: [0, 5, 0, -5, 0] }}
-                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                  />
+                  {/* Outer glow */}
+                  <div className={`absolute -inset-4 bg-gradient-to-br ${step.glowColor} rounded-2xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity duration-500`} />
+                  
+                  {/* Frame container */}
+                  <div className={`relative bg-background/40 backdrop-blur-sm rounded-xl border ${step.borderColor} p-4 shadow-2xl`}>
+                    <motion.img
+                      src={step.orb}
+                      alt={step.title}
+                      className="w-64 md:w-80 rounded-lg"
+                      animate={{ scale: [1, 1.02, 1] }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    />
+                  </div>
                 </div>
               </div>
 
