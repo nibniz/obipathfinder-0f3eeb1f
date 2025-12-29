@@ -1,51 +1,55 @@
 import { motion } from "framer-motion";
 import { Bot, Shield, Sparkles, XCircle } from "lucide-react";
+import astronaut from "@/assets/astronaut.webp";
 
 const features = [
-  { icon: XCircle, text: "No exams", color: "text-cosmic-pink" },
-  { icon: Shield, text: "No pressure", color: "text-accent" },
-  { icon: Sparkles, text: "No one-size-fits-all approach", color: "text-primary" },
+  { icon: XCircle, text: "No exams" },
+  { icon: Shield, text: "No pressure" },
+  { icon: Sparkles, text: "No one-size-fits-all" },
 ];
 
 export const WhatIsObiSection = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/10 to-background" />
-      
-      {/* Decorative Orbs */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+    <section className="py-32 relative overflow-hidden">
+      {/* Background with decorative elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/5 to-background" />
+      <div className="absolute top-1/4 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-6 relative z-10">
+        {/* Two Column Layout with Z-pattern */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left - Text Content */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7 }}
+            className="order-2 lg:order-1"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30 text-accent font-medium text-sm mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/30 text-accent font-medium text-sm mb-8">
               <Bot className="w-4 h-4" />
               Meet Obi
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
-              Your child's <span className="text-gradient">learning companion</span>
+            <h2 className="font-display text-4xl sm:text-5xl md:text-6xl font-extrabold mb-8 uppercase tracking-tight leading-tight">
+              Your Child's <br />
+              <span className="text-gradient">Learning Companion</span>
             </h2>
 
-            <p className="text-lg text-muted-foreground mb-6">
-              Obi is an empathetic, AI-powered learning companion designed to understand your child as they are.
+            <p className="text-xl text-muted-foreground mb-6 leading-relaxed">
+              Obi is an empathetic, AI-powered companion designed to understand your child as they are.
             </p>
 
-            <p className="text-foreground mb-8">
-              It does not test, rank, or label children.
-              <br />
+            <p className="text-lg text-foreground mb-10">
+              It does not test, rank, or label children. <br />
               <span className="text-accent font-medium">
-                Instead, it observes how your child thinks, feels, and learns — and turns that understanding into guidance.
+                Instead, it observes how your child thinks, feels, and learns.
               </span>
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            {/* Feature Pills */}
+            <div className="flex flex-wrap gap-3">
               {features.map((feature, index) => (
                 <motion.div
                   key={index}
@@ -53,49 +57,40 @@ export const WhatIsObiSection = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.1 * index }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-muted border border-border"
+                  className="flex items-center gap-2 px-5 py-3 rounded-full bg-muted border border-border hover:border-primary/30 transition-colors"
                 >
-                  <feature.icon className={`w-4 h-4 ${feature.color}`} />
-                  <span className="font-medium">{feature.text}</span>
+                  <feature.icon className="w-5 h-5 text-primary" />
+                  <span className="font-semibold">{feature.text}</span>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
+          {/* Right - Floating Visual */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative"
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="order-1 lg:order-2 flex justify-center"
           >
-            <div className="relative glass-card rounded-3xl p-8 nebula-glow">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 rounded-3xl" />
-              
-              <div className="relative">
-                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary via-cosmic-pink to-accent flex items-center justify-center mx-auto mb-6 shadow-glow">
-                  <Bot className="w-12 h-12 text-primary-foreground" />
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-primary/30 rounded-full blur-3xl scale-75" />
+              <motion.div
+                className="relative glass-card rounded-3xl p-10 nebula-glow"
+                animate={{ y: [-8, 8, -8] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary via-cosmic-pink to-accent flex items-center justify-center mx-auto mb-6 shadow-glow">
+                  <Bot className="w-16 h-16 text-primary-foreground" />
                 </div>
-
-                <h3 className="font-display text-2xl font-bold text-center mb-4">
+                <h3 className="font-display text-2xl font-bold text-center mb-3">
                   Empathetic AI
                 </h3>
-
-                <p className="text-center text-muted-foreground">
-                  Obi adapts to your child's unique way of thinking and learning, creating a personalized experience that grows with them.
+                <p className="text-center text-muted-foreground text-sm max-w-xs">
+                  Obi adapts to your child's unique way of thinking and learning.
                 </p>
-
-                <div className="mt-8 flex justify-center gap-4">
-                  {[1, 2, 3].map((_, i) => (
-                    <motion.div
-                      key={i}
-                      className="w-3 h-3 rounded-full bg-primary"
-                      animate={{ scale: [1, 1.3, 1], opacity: [0.5, 1, 0.5] }}
-                      transition={{ duration: 1.5, delay: i * 0.2, repeat: Infinity }}
-                    />
-                  ))}
-                </div>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>

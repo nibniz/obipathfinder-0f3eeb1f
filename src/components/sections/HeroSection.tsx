@@ -1,19 +1,31 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import cosmicBg from "@/assets/cosmic-hero-bg.jpg";
 import astronaut from "@/assets/astronaut.webp";
+import { useRef } from "react";
 
 export const HeroSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+  
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div 
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Parallax Background Image */}
+      <motion.div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${cosmicBg})` }}
+        style={{ 
+          backgroundImage: `url(${cosmicBg})`,
+          y: backgroundY
+        }}
       >
         <div className="absolute inset-0 bg-background/50" />
-      </div>
+      </motion.div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,9 +76,8 @@ export const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
               className="pt-2"
             >
-              <Button variant="glow" size="lg" className="font-display group">
-                Invest in Their Future
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Button variant="glow" size="default" className="font-display">
+                Get started
               </Button>
             </motion.div>
           </div>
