@@ -66,17 +66,14 @@ export const HowItWorksSection = () => {
               {/* Globe Visual */}
               <div className={`flex justify-center ${index % 2 === 1 ? "lg:order-2" : ""}`}>
                 <div className="relative group">
-                  {/* Outer glow layers */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-cosmic-purple/40 rounded-full blur-[60px] scale-110 opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
-                  <div className="absolute inset-0 bg-primary/30 rounded-full blur-[40px] scale-100 animate-pulse" />
-                  {/* Inner glow */}
-                  <div className="absolute inset-4 bg-gradient-radial from-primary/20 to-transparent rounded-full blur-2xl" />
+                  {/* Subtle glow behind sphere */}
+                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-[50px] scale-90 opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
                   <motion.img
                     src={step.globe}
                     alt={step.title}
-                    className="relative w-64 md:w-80 drop-shadow-[0_0_30px_hsl(var(--primary)/0.4)] mix-blend-screen"
-                    animate={{ y: [-12, 12, -12], rotate: [0, 3, 0, -3, 0] }}
-                    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+                    className="relative w-48 md:w-64 drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                    animate={{ y: [-8, 8, -8], rotate: [0, 5, 0, -5, 0] }}
+                    transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                   />
                 </div>
               </div>
