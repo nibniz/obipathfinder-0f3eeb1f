@@ -70,7 +70,7 @@ export const HowItWorksSection = () => {
                   <motion.img
                     src={step.globe}
                     alt={step.title}
-                    className="relative w-64 md:w-80 drop-shadow-2xl"
+                    className="relative w-64 md:w-80 drop-shadow-2xl mix-blend-screen"
                     animate={{ y: [-12, 12, -12], rotate: [0, 3, 0, -3, 0] }}
                     transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                   />
