@@ -10,22 +10,8 @@ const activities = [
 
 export const ConfidenceSection = () => {
   return (
-    <section className="py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
-      
-      {/* Animated Background Orbs */}
-      <motion.div
-        className="absolute top-1/4 right-10 w-80 h-80 bg-primary/10 rounded-full blur-3xl"
-        animate={{ x: [0, 20, 0], y: [0, -15, 0] }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="absolute bottom-1/4 left-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
-        animate={{ x: [0, -15, 0], y: [0, 20, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-24 md:py-32 relative overflow-hidden bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -62,7 +48,7 @@ export const ConfidenceSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
               whileHover={{ y: -8, scale: 1.05 }}
-              className="flex-1 min-w-[140px] max-w-[180px] p-6 rounded-2xl bg-muted/50 border border-border/50 text-center backdrop-blur-sm hover:border-primary/40 transition-all duration-300 cursor-pointer"
+              className="flex-1 min-w-[140px] max-w-[180px] p-6 rounded-2xl glass-card border border-border/50 text-center hover:border-primary/40 transition-all duration-300 cursor-pointer"
             >
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center mx-auto mb-4 shadow-glow">
                 <activity.icon className="w-7 h-7 text-primary-foreground" />
@@ -82,7 +68,7 @@ export const ConfidenceSection = () => {
         >
           Confidence grows from capability, not comparison.
         </motion.p>
-      </div>
-    </section>
+        </div>
+      </section>
   );
 };

@@ -14,12 +14,8 @@ const modalities = [
 
 export const LearningExperienceSection = () => {
   return (
-    <section className="py-32 relative overflow-hidden cosmic-bg">
-      {/* Decorative Orbs */}
-      <div className="absolute top-1/4 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-24 md:py-32 relative overflow-hidden bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -45,7 +41,8 @@ export const LearningExperienceSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="flex-1 min-w-[260px] p-6 rounded-2xl bg-muted/50 border border-border/50 backdrop-blur-sm"
+              whileHover={{ y: -3, scale: 1.02 }}
+              className="flex-1 min-w-[260px] p-6 rounded-2xl glass-card border border-border/50 hover:border-primary/40 transition-all duration-300"
             >
               <div className="flex items-center gap-4">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0 shadow-glow">
@@ -69,7 +66,8 @@ export const LearningExperienceSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: 0.1 * index }}
-              className="px-6 py-4 rounded-full bg-muted/50 border border-border/50 flex items-center gap-3 backdrop-blur-sm hover:border-accent/40 transition-colors"
+              whileHover={{ scale: 1.05, y: -2 }}
+              className="px-6 py-4 rounded-full glass-card border border-border/50 flex items-center gap-3 hover:border-accent/40 transition-all duration-300"
             >
               <modality.icon className="w-5 h-5 text-accent" />
               <span className="font-medium text-foreground">{modality.text}</span>
@@ -87,7 +85,7 @@ export const LearningExperienceSection = () => {
         >
           Learning feels natural — not forced.
         </motion.p>
-      </div>
-    </section>
+        </div>
+      </section>
   );
 };

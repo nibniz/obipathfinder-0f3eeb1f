@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Bot, Shield, Sparkles, XCircle } from "lucide-react";
-import astronaut from "@/assets/astronaut.webp";
+import characterBoy from "@/assets/charactor_boy.png";
 
 const features = [
   { icon: XCircle, text: "No exams" },
@@ -10,13 +10,8 @@ const features = [
 
 export const WhatIsObiSection = () => {
   return (
-    <section className="py-32 relative overflow-hidden">
-      {/* Background with decorative elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/5 to-background" />
-      <div className="absolute top-1/4 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-24 md:py-32 relative overflow-hidden bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Two Column Layout with Z-pattern */}
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Text Content */}
@@ -66,35 +61,35 @@ export const WhatIsObiSection = () => {
             </div>
           </motion.div>
 
-          {/* Right - Floating Visual */}
+          {/* Right - Floating Character Visual */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="order-1 lg:order-2 flex justify-center"
+            className="order-1 lg:order-2 flex justify-center items-center"
           >
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-accent/30 to-primary/30 rounded-full blur-3xl scale-75" />
               <motion.div
-                className="relative glass-card rounded-3xl p-10 nebula-glow"
+                className="relative"
                 animate={{ y: [-8, 8, -8] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               >
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary via-cosmic-pink to-accent flex items-center justify-center mx-auto mb-6 shadow-glow">
-                  <Bot className="w-16 h-16 text-primary-foreground" />
-                </div>
-                <h3 className="font-display text-2xl font-bold text-center mb-3">
-                  Empathetic AI
-                </h3>
-                <p className="text-center text-muted-foreground text-sm max-w-xs">
-                  Obi adapts to your child's unique way of thinking and learning.
-                </p>
+                <motion.img
+                  src={characterBoy}
+                  alt="Obi Character"
+                  className="w-64 md:w-80 lg:w-96 xl:w-[400px] h-auto object-contain drop-shadow-2xl"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                />
               </motion.div>
             </div>
           </motion.div>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
   );
 };

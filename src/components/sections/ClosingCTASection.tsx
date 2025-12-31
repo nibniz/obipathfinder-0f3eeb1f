@@ -4,17 +4,8 @@ import { ArrowRight } from "lucide-react";
 
 export const ClosingCTASection = () => {
   return (
-    <section className="py-32 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-secondary/20 to-background" />
-      
-      <motion.div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl"
-        animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-24 md:py-32 relative overflow-hidden bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -70,7 +61,7 @@ export const ClosingCTASection = () => {
             </Button>
           </motion.div>
         </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
   );
 };

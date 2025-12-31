@@ -1,34 +1,14 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import cosmicBg from "@/assets/cosmic-hero-bg.jpg";
 import astronaut from "@/assets/astronaut.webp";
-import { useRef } from "react";
+import { CosmicBackground } from "@/components/CosmicBackground";
 
 export const HeroSection = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  });
-  
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Parallax Background Image */}
-      <motion.div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: `url(${cosmicBg})`,
-          y: backgroundY
-        }}
-      >
-        <div className="absolute inset-0 bg-background/50" />
-      </motion.div>
-
-      {/* Content */}
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+    <CosmicBackground parallax overlayOpacity={0.5}>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center min-h-[80vh]">
           {/* Left Content */}
           <div className="text-left space-y-5 pt-20 lg:pt-0">
@@ -116,8 +96,9 @@ export const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      {/* Bottom Gradient Fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
-    </section>
+        {/* Bottom Gradient Fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+      </section>
+    </CosmicBackground>
   );
 };

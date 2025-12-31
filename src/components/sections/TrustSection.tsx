@@ -10,12 +10,8 @@ const trustPoints = [
 
 export const TrustSection = () => {
   return (
-    <section className="py-32 relative overflow-hidden cosmic-bg">
-      {/* Decorative Elements */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-24 md:py-32 relative overflow-hidden bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -46,7 +42,8 @@ export const TrustSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="p-5 rounded-2xl bg-muted/50 border border-border/50 backdrop-blur-sm flex items-center gap-4 hover:border-accent/40 transition-colors"
+              whileHover={{ y: -2, scale: 1.02 }}
+              className="p-6 rounded-2xl glass-card border border-border/50 flex items-center gap-4 hover:border-accent/40 transition-all duration-300"
             >
               <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center flex-shrink-0">
                 <point.icon className="w-6 h-6 text-accent" />
@@ -55,7 +52,7 @@ export const TrustSection = () => {
             </motion.div>
           ))}
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
   );
 };

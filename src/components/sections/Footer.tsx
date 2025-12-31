@@ -6,8 +6,8 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="py-16 relative cosmic-bg border-t border-border/50">
-      <div className="container mx-auto px-6">
+    <footer className="py-16 relative border-t border-border/50 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ export const Footer = () => {
             </p>
           </motion.div>
         </div>
-      </div>
-    </footer>
+        </div>
+      </footer>
   );
 };

@@ -25,7 +25,12 @@ export const Navbar = () => {
         <div className="glass-card rounded-2xl px-6 py-3 flex items-center justify-between">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3">
-            <img src={obiLogo} alt="Obi" className="h-8" />
+            <img 
+              src={obiLogo} 
+              alt="Obi" 
+              className="h-8 w-auto drop-shadow-sm" 
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
           </a>
 
           {/* Desktop Navigation */}

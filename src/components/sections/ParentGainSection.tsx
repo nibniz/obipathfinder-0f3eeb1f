@@ -10,14 +10,8 @@ const insights = [
 
 export const ParentGainSection = () => {
   return (
-    <section className="py-32 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-accent/5 to-background" />
-      
-      {/* Decorative Orbs */}
-      <div className="absolute top-1/3 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/3 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-
-      <div className="container mx-auto px-6 relative z-10">
+    <section className="py-24 md:py-32 relative overflow-hidden bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Centered Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -45,7 +39,7 @@ export const ParentGainSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.1 * index }}
                 whileHover={{ y: -5, scale: 1.02 }}
-                className="p-6 rounded-2xl bg-muted/50 border border-border/50 backdrop-blur-sm flex items-center gap-5 hover:border-primary/40 transition-all duration-300 cursor-pointer"
+                className="p-6 rounded-2xl glass-card border border-border/50 flex items-center gap-5 hover:border-primary/40 transition-all duration-300 cursor-pointer"
               >
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center flex-shrink-0">
                   <insight.icon className="w-7 h-7 text-primary" />
@@ -71,7 +65,7 @@ export const ParentGainSection = () => {
             </p>
           </motion.div>
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
   );
 };

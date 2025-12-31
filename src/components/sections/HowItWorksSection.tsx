@@ -1,5 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Search, User, Compass } from "lucide-react";
+import { useRef } from "react";
+import astronaut from "@/assets/astronaut.webp";
+import { CosmicBackground } from "@/components/CosmicBackground";
 
 const steps = [
   {
@@ -35,15 +38,13 @@ const steps = [
 ];
 
 const GlowingOrb = ({ 
-  icon: Icon, 
+  number,
   gradient, 
-  glowColor, 
-  iconColor 
+  glowColor
 }: { 
-  icon: React.ElementType; 
+  number: string;
   gradient: string; 
-  glowColor: string; 
-  iconColor: string;
+  glowColor: string;
 }) => (
   <div className="relative w-48 h-48 md:w-64 md:h-64">
     {/* Outer glow rings */}
@@ -69,26 +70,52 @@ const GlowingOrb = ({
       {/* Inner highlight */}
       <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/30 to-transparent" />
       
-      {/* Icon */}
-      <Icon className={`w-12 h-12 md:w-16 md:h-16 ${iconColor} drop-shadow-lg relative z-10`} strokeWidth={1.5} />
+      {/* Number */}
+      <span className="text-6xl md:text-7xl font-display font-black text-white drop-shadow-lg relative z-10">
+        {number}
+      </span>
     </motion.div>
-    
-    {/* Light rays */}
-    <motion.div 
-      className={`absolute inset-0 rounded-full`}
-      style={{
-        background: `conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1) 10%, transparent 20%, transparent 100%)`,
-      }}
-      animate={{ rotate: 360 }}
-      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-    />
   </div>
 );
 
 export const HowItWorksSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"]
+  });
+
+  // Lock character position - stays fixed while scrolling
+  const characterOpacity = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0, 1, 1, 0]);
+  const characterScale = useTransform(scrollYProgress, [0, 0.1, 0.9, 1], [0.8, 1, 1, 0.8]);
+
   return (
-    <section className="py-32 relative overflow-hidden cosmic-bg">
-      <div className="container mx-auto px-6">
+    <CosmicBackground starfield parallax overlayOpacity={0.6}>
+      <section ref={sectionRef} className="py-24 md:py-32 relative overflow-hidden">
+        {/* Astronaut Character - Locked in position while background parallaxes */}
+        <motion.div
+          className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none hidden lg:block"
+          style={{ 
+            opacity: characterOpacity,
+            scale: characterScale,
+          }}
+        >
+          <motion.img
+            src={astronaut}
+            alt="Obi Astronaut"
+            className="w-48 xl:w-64 max-w-none"
+            animate={{ 
+              y: [-8, 8, -8],
+            }}
+            transition={{ 
+              duration: 5, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+          />
+        </motion.div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -109,7 +136,8 @@ export const HowItWorksSection = () => {
         </motion.div>
 
         {/* Discovery Journey - Alternating Z-Pattern */}
-        <div className="space-y-24 max-w-6xl mx-auto">
+        <div className="space-y-24 max-w-6xl mx-auto relative">
+
           {steps.map((step, index) => (
             <motion.div
               key={index}
@@ -117,39 +145,38 @@ export const HowItWorksSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.1 * index }}
-              className={`grid lg:grid-cols-2 gap-12 items-center ${
+              className={`grid lg:grid-cols-2 gap-12 items-center relative ${
                 index % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
             >
               {/* Glowing Orb Visual */}
               <div className={`flex justify-center ${index % 2 === 1 ? "lg:order-2" : ""}`}>
                 <GlowingOrb 
-                  icon={step.icon} 
+                  number={step.number}
                   gradient={step.gradient} 
                   glowColor={step.glowColor}
-                  iconColor={step.iconColor}
                 />
               </div>
 
               {/* Text Content */}
-              <div className={`${index % 2 === 1 ? "lg:order-1 lg:text-right" : ""}`}>
-                <span className="inline-block text-7xl font-display font-black text-primary/20 mb-4">
-                  {step.number}
-                </span>
-                <h3 className="font-display text-3xl md:text-4xl font-extrabold uppercase mb-3">
-                  {step.title}
-                </h3>
-                <p className="text-xl text-accent font-medium italic mb-4">
-                  "{step.subtitle}"
-                </p>
-                <p className="text-lg text-muted-foreground leading-relaxed max-w-md">
-                  {step.description}
-                </p>
+              <div className={`${index % 2 === 1 ? "lg:order-1" : ""} flex items-center`}>
+                <div className={`${index % 2 === 1 ? "lg:text-right lg:ml-auto" : ""} max-w-md`}>
+                  <h3 className="font-display text-3xl md:text-4xl font-extrabold uppercase mb-3">
+                    {step.title}
+                  </h3>
+                  <p className="text-xl text-accent font-medium italic mb-4">
+                    "{step.subtitle}"
+                  </p>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
-      </div>
-    </section>
+        </div>
+      </section>
+    </CosmicBackground>
   );
 };
